@@ -88,9 +88,9 @@ class Organ(dj.Lookup):
 @schema
 class Session(dj.Manual):
     definition = """
-    -> Species
-    session_start_time      : datetime
+    session_name            : varchar(128)
     ---
+    session_date            : datetime
     data_directory          : varchar(1024)     # location on server
     backup_location         : varchar(128)      # location of cold backup, eg. GOAT_BACKUP_10
     """
@@ -115,12 +115,11 @@ class Session(dj.Manual):
 @schema
 class Scan(dj.Manual):
     definition = """
-    -> Session
-    -> Specimen
+    -> Session.Specimen
     scan_name                       :   varchar(32)
     ---
     -> microscopy.ScapeConfig
-    -> Organ
+    -> [nullable] Organ
     scan_filename                   :   varchar(1024)
     scan_note                       :   varchar(1024)
     scan_start_time                 :   datetime

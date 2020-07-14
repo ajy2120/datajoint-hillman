@@ -1,6 +1,6 @@
 import datajoint as dj
 
-schema = dj.schema('hillman_experiment')
+schema = dj.schema('hillman_lab')
 
 
 @schema
@@ -21,8 +21,8 @@ class LabMember(dj.Lookup):
     full_name:  varchar(32)
     -> Lab
     """
-    contents = [['richardyan', 'hillmanlab'],
-                ['wenzeli', 'hillmanlab']]
+    contents = [['richardyan', 'richardyan','hillmanlab'],
+                ['wenzeli','wenzeli', 'hillmanlab']]
 
 
 @schema
@@ -47,14 +47,14 @@ class Project(dj.Lookup):
     project_description=''      : varchar(1024)
     """
 
-@schema
-class Drug(dj.Lookup):
-    # Drug
-    definition = """
-    drug    : varchar(32)
-    ---
-    (drug_source) -> hillman_lab.Source
-    drug_description='': varchar(255)
-    """
-
-    contents = [['caffeine',''], ['alcohol','']] # need an update
+#@schema
+#class Drug(dj.Lookup):
+#    # Drug
+#    definition = """
+#    drug    : varchar(32)
+#    ---
+#    (drug_source) -> hillman_lab.Source
+#    drug_description='': varchar(255)
+#   """
+#
+#    contents = [['caffeine',''], ['alcohol','']] # need an update
