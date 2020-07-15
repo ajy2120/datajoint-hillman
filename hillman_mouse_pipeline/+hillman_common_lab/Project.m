@@ -1,7 +1,7 @@
 %{
   project                     : varchar(32)
   ---
-  -> LabMember
+  -> hillman_common_lab.LabMember
   project_description=''      : varchar(1024)
 %}
 

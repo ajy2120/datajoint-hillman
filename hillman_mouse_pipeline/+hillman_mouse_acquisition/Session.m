@@ -1,11 +1,11 @@
 %{
--> hillman_mouse_subject.Subject
+-> hillman_mouse_subject.Nickname
 session_date      : date
 session_index     : tinyint unsigned
 ---
 session_start_time: time
-(session_location) -> hillman_mouse_lab.Location
-(primary_experimenter) -> hillman_mouse_lab.User
+(session_location) -> hillman_common_lab.Location
+(primary_experimenter) -> hillman_common_lab.LabMember
 data_directory    : varchar(255)
 -> hillman_mouse_action.Anesthesia
 -> hillman_mouse_action.Dosage
