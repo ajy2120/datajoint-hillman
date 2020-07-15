@@ -1,12 +1,12 @@
 %{
-  user        : varchar(32)
+  user        : varchar(32)     # columbia uni
   ---
   full_name  : varchar(32) 
-  -> Lab
+  -> hillman_common_lab.Lab
 %}
 
 classdef LabMember < dj.Lookup
     properties
-        contents = {{'richardyan', 'hillmanlab'}, {'wenzeli', 'hillmanlab'}} % need an update
+        contents = {'hz2356', 'Teresa Zhao', 'Hillmanlab'; 'ajy2120','AJ Yagielski','HillmanLab'} % need an update
     end
 end

@@ -2,7 +2,7 @@
 #nickname
 nickname: varchar(32)
 ---
-->subject_yaki_matlab.Subject
+->hillman_mouse_subject.Subject
 unique index (subject_id)
 %}
 

@@ -12,7 +12,7 @@ mark_type: enum('ear', 'toe', 'tail')
 mark='':             varchar(128) 
 -> hillman_common_lab.Source
 -> hillman_mouse_subject.Strain                              
-subject_notes='':    varchar(1024)s
+subject_notes='':    varchar(1024)
 subject_ts = CURRENT_TIMESTAMP: timestamp
 %}
 
