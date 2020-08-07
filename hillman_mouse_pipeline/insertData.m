@@ -34,6 +34,28 @@ end
 %%%%%%%%    insert surgery
 insert(hillman_mouse_action.Surgery,data)
 
+
+%% import excel tables - weighing and anesthesia
+clearvars -except basepath
+basepath = '/home/hz2356/Documents/DataJoint/Code/';
+weight = readtable('/home/hz2356/Documents/DataJoint/Code/mouse-colony-update.xlsx','Sheet','Weighing');
+weight = table2struct(weight);
+
+for i = 1:numel(weight)
+    weight(i).weighing_time = datestr(weight.weighing_time,'yyyy-mm-dd HH:MM:SS');
+end
+
+insert(hillman_mouse_action.Weighing,weight)
+
+anesthesia = readtable('/home/hz2356/Documents/DataJoint/Code/mouse-colony-update.xlsx','Sheet','Anesthesia');
+anesthesia = table2struct(anesthesia);
+
+for i = 1:numel(anesthesia)
+    anesthesia(i).time_given = datestr(anesthesia(i).time_given, 'yyyy-mm-dd HH:MM:SS');
+end
+
+insert(hillman_mouse_action.Anesthesia,anesthesia)
+
 %% import excel tables - session
 clc
 clearvars -except basepath
@@ -43,14 +65,27 @@ data = table2struct(data);
 
 for i = 1:numel(data)
     data(i).session_date = datestr(data(i).session_date,29);
+    data(i).session_start_time = datestr(data(i).session_start_time,'HH:MM:SS');
 end
 
 %%%%%%%%    insert surgery
 insert(hillman_mouse_acquisition.Session,data)
 
 
-% QUESTIONS: what to do about when we don't give anesthesia or a drug? how
-% to make nullable since it's a primary key?
+%% import excel tables - drug dosage
+clc
+clearvars -except basepath
+basepath = '/home/hz2356/Documents/DataJoint/Code/';
+data = readtable('/home/hz2356/Documents/DataJoint/Code/mouse-colony-update.xlsx','Sheet','DrugDosage');
+data = table2struct(data);
+
+for i = 1:numel(data)
+    data(i).session_date = datestr(data(i).session_date,29);
+    data(i).dosage_time = datestr(data(i).dosage_time,'HH:MM:SS');
+end
+
+%%%%%%%%    insert surgery
+insert(hillman_mouse_action.DrugDosage,data)
 
 %% import excel tables - run
 clc
@@ -78,7 +113,6 @@ end
 
 insert(hillman_mouse_acquisition.CameraRunLed,data)
 
-% QUESTIONS: how do i get multiple options?
 
 %% import excel tables - stimulus
 clc
@@ -93,7 +127,6 @@ end
 
 insert(hillman_mouse_acquisition.Stimulus,data)
 
-% QUESTION: how to turn on ONLY IF it's runtype (in CameraRun) is stimulus?
 %% insert one-off things
 data = struct('location','wfom2','location_description','the right one');
 insert(hillman_common_lab.Location,data);
