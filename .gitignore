@@ -1,6 +1,7 @@
 # Matlab temporary files
 *.m~
-
+# 
+hillman_mouse_pipeline/examples/configSchema
 # IDEA configs
 .idea/
 
