@@ -3,7 +3,6 @@
 # Subject
 subject_id: varchar(32)                  # unique mouse id
 ---
-subject_colony_name: varchar(255)
 dob: date                     # mouse date of birth
 sex='U': enum('M', 'F', 'U')       # sex of mouse - Male, Female, or Unknown/Unclassified
 breeding_pair='':    varchar(255)             # 2 str for parents
