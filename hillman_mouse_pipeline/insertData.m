@@ -12,14 +12,14 @@ for i = 1:numel(data)
 end
 
 %%%%%%%%    insert subjects
-insert(hillman_mouse_subject.Subject,data)
+insert(subject.Subject,data)
 
 
 %%%%%%%%    insert nicknames
 nicknames = readtable('/home/hz2356/Documents/DataJoint/Code/mouse-colony-update.xlsx','Sheet','Nicknames');
 nicknames = table2struct(nicknames);
 
-insert(hillman_mouse_subject.Nickname,nicknames)
+insert(subject.Nickname,nicknames)
 
 %% import excel tables - surgery
 clearvars -except basepath
@@ -32,7 +32,7 @@ for i = 1:numel(data)
 end
 
 %%%%%%%%    insert surgery
-insert(hillman_mouse_action.Surgery,data)
+insert(action.Surgery,data)
 
 
 %% import excel tables - weighing and anesthesia
@@ -45,7 +45,7 @@ for i = 1:numel(weight)
     weight(i).weighing_time = datestr(weight.weighing_time,'yyyy-mm-dd HH:MM:SS');
 end
 
-insert(hillman_mouse_action.Weighing,weight)
+insert(action.Weighing,weight)
 
 anesthesia = readtable('/home/hz2356/Documents/DataJoint/Code/mouse-colony-update.xlsx','Sheet','Anesthesia');
 anesthesia = table2struct(anesthesia);
@@ -54,7 +54,7 @@ for i = 1:numel(anesthesia)
     anesthesia(i).time_given = datestr(anesthesia(i).time_given, 'yyyy-mm-dd HH:MM:SS');
 end
 
-insert(hillman_mouse_action.Anesthesia,anesthesia)
+insert(action.Anesthesia,anesthesia)
 
 %% import excel tables - session
 clc
@@ -69,7 +69,7 @@ for i = 1:numel(data)
 end
 
 %%%%%%%%    insert surgery
-insert(hillman_mouse_acquisition.Session,data)
+insert(acquisition.Session,data)
 
 
 %% import excel tables - drug dosage
@@ -85,7 +85,7 @@ for i = 1:numel(data)
 end
 
 %%%%%%%%    insert surgery
-insert(hillman_mouse_action.DrugDosage,data)
+insert(action.DrugDosage,data)
 
 %% import excel tables - run
 clc
@@ -98,7 +98,7 @@ for i = 1:numel(data)
     data(i).session_date = datestr(data(i).session_date,29);
 end
 
-insert(hillman_mouse_acquisition.CameraRun,data)
+insert(acquisition.CameraRun,data)
 
 %% import excel tables - runLED
 clc
@@ -111,7 +111,7 @@ for i = 1:numel(data)
     data(i).session_date = datestr(data(i).session_date,29);
 end
 
-insert(hillman_mouse_acquisition.CameraRunLed,data)
+insert(acquisition.CameraRunLed,data)
 
 
 %% import excel tables - stimulus
@@ -125,8 +125,8 @@ for i = 1:numel(data)
     data(i).session_date = datestr(data(i).session_date,29);
 end
 
-insert(hillman_mouse_acquisition.Stimulus,data)
+insert(acquisition.Stimulus,data)
 
 %% insert one-off things
 data = struct('location','wfom2','location_description','the right one');
-insert(hillman_common_lab.Location,data);
+insert(lab.Location,data);
