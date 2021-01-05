@@ -11,8 +11,8 @@ idx = strcmp({attributes.name}, attr);
 
 type = attributes(idx).type;
 
-lab.Source
-subject.Subject
+lab.Source;
+subject.Subject;
 
 % If it is an enum field, extract the options
 if contains(type, 'enum')
