@@ -37,6 +37,6 @@ else
     ref_fullname = conn.foreignKeys(idx).ref;
     ref_table = eval(conn.tableToClass(ref_fullname));
     ref_attr = conn.foreignKeys(idx).ref_attrs{1};
-    options = fetchn(ref_table, ref_attr);
+    options = fetchn(ref_table, ref_attr)';
 end
 
