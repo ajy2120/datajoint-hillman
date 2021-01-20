@@ -2,12 +2,13 @@ function cleaned_entry = cleanupEntry(entry)
 
      for field = fields(entry)'
         f = field{1};
-        if isempty(entry.(f))
+        entry_value = entry.(f);
+        if isempty(entry_value)
             entry = rmfield(entry, f);
+        elseif isdatetime(entry_value)
+            entry.(f) = datestr(entry_value, 'yyyy-mm-dd');
         end
-        if isdatetime(entry.(f))
-            entry.(f) = datestr(entry.(f), 'yyyy-mm-dd');
-        end
+        
     end
     cleaned_entry = entry;
 
