@@ -8,6 +8,6 @@ zygosity: enum("Present", "Absent", "Homozygous Negative", "Homozygous Positive"
 zygosity_ts = CURRENT_TIMESTAMP: timestamp
 %}
 
-classdef Zygosity < dj.Lookup
+classdef Zygosity < dj.Manual
 
 end
