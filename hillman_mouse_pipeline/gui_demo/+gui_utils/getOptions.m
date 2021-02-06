@@ -4,7 +4,8 @@ function options = getOptions(table, attr, conn)
 %   Inputs: table: table object
 %           attr: string, attribute name
 %           conn: dj connection object
-%   Outputs: default_value: default value of the field
+%   Outputs: 
+%           options: cell array of options for this fieldd
 
 attributes = table.header.attributes;
 idx = strcmp({attributes.name}, attr);
@@ -27,7 +28,7 @@ if contains(type, 'enum')
     return
 % If it is a dependent field
 else
-    utils.init_schemas
+    gui_utils.init_schemas
     % get the idx of the relevant field
     idx = strcmp({conn.foreignKeys.from}, table.fullTableName) & strcmp([conn.foreignKeys.attrs], attr);
     if sum(idx) == 0

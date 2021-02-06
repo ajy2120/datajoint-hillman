@@ -8,7 +8,7 @@ attributes = q.header.attributes;
 idx = strcmp({attributes.name}, attr);
 default_value = attributes(idx).default;
 if strcmp(default_value, 'current_timestamp()')
-    default_value = {};
+    default_value = datestr(datetime('now'), 'yyyy-mm-dd HH:MM:ss');
 end
-end
+
 
