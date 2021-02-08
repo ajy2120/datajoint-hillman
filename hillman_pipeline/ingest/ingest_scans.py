@@ -1,3 +1,4 @@
+
 import datajoint as dj
 import h5py
 import os, sys
@@ -6,6 +7,8 @@ import experiment, microscopy
 import re
 import datetime
 import numpy as np
+
+#%%
 
 # helper functions
 def dataset_to_string(dataset):
@@ -60,24 +63,24 @@ session_pk = dict(
     session_date = session_date,
     data_directory = session_dir,
     backup_location='unknown')
-    
+
 experiment.Session.insert1(
     dict(**session_pk),
     skip_duplicates=True)
 
 # insert into the table experiment.Scan and its part tables
 for i_scan, filename in enumerate(filenames):
-    
+
     # get the specimen name
     specimen = re.search(r'^([A-Za-z0-9]*)_', filenames[i_scan]).groups()[0]+'_'+session_name
-    
+
     # insert into the table experiment.Specimen
     experiment.Specimen.insert1(
     dict(specimen=specimen,
          source=source,
          species=species),
     skip_duplicates=True)  # usually turn on this arg if insert manually
-    
+
     experiment.Session.Specimen.insert1(
     dict(session_name=session_name, specimen=specimen),
     skip_duplicates=True)
@@ -112,3 +115,5 @@ for i_scan, filename in enumerate(filenames):
              calibration_y=dataset_to_scalar(calfactor['y_umPerPix'], 3),
              calibration_z=dataset_to_scalar(calfactor['z_umPerPix'], 3)),
         skip_duplicates=True)
+
+# %%
