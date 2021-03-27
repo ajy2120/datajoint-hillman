@@ -6,7 +6,7 @@ function message = updateTable(table, key, newEntries, message, updateTs)
 %       masterKey: struct, primary key of the master entry
 %       newEntries: struct array, new entries to insert or update
 %       message: optional, cell array of initial message
-%
+%       updateTs: optional, 
 %   Outputs:
 %       message: output message
    
