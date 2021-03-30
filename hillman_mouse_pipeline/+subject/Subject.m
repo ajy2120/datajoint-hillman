@@ -12,7 +12,7 @@ mark                        : varchar(128)                  #
 -> lab.Source
 -> subject.Strain
 subject_notes               : varchar(1024)                 # 
-subject_ts="current_timestamp()": timestamp                 # 
+subject_ts=CURRENT_TIMESTAMP: timestamp                 # 
 %}
 
 classdef Subject < dj.Manual

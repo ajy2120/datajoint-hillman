@@ -4,7 +4,7 @@
 strain_name: varchar(64)                # unique strain id
 ---
 strain_description='': varchar(255)
-strain_ts = "current_timestamp()": timestamp 
+strain_ts=CURRENT_TIMESTAMP: timestamp 
 %}
 
 classdef Strain < dj.Lookup
