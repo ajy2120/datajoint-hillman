@@ -78,35 +78,34 @@ insert(subject.Subject,data)
 
 %% insert subjects manually
 clear data
-subject_id = {'1','2','3'};
-subject_nickname = {'A019','A020','A021'};
-subject_colony_name = {'Ai95','Ai95','Ai95'};
-dob = {'','','','',''};
-sex = {'M','F','M','M','F'};
-breeding_pair = {'','','','',''};
-subject_type = {'mouse'};
-mark = {'1L','1R','1L/1R','none','1R'};
-subject_notes = {'cute','jumpy','bites','calm','fat'};
+subject_id = {'test3'};
+% subject_nickname = {'cm001'};
+ subject_colony_name = {''};
+dob = {'2021-01-01'};
+sex = {'U'};
+breeding_pair = {''};
+species = {'mouse'};
+mark = {''};
+subject_notes = {''};
 
-mark_type = {'ear','ear','ear','ear','ear'};
-source_name = {'in house','in house','in house','in house','in house'};
-strain_name = {'jRGECO1','jRGECO1','jRGECO1','jRGECO1','jRGECO1'};
+mark_type = {'ear'};
+source_name = {'in house'};
+strain_name = {'JRGECO1a'};
 
 for i = 1:length(subject_id)
     data(i).subject_id= subject_id{i};
-    data(i).subject_nickname = subject_nickname{i};
+%     data(i).subject_nickname = subject_nickname{i};
     data(i).subject_colony_name = subject_colony_name{i};
     data(i).dob = dob{i};
     data(i).sex = sex{i};
     data(i).breeding_pair = breeding_pair{i};
-    data(i).subject_type = subject_type{1};
+    data(i).species = species{1};
     data(i).mark_type = mark_type{i};
     data(i).mark = mark{i};
     data(i).source_name = source_name {i};
     data(i).strain_name = strain_name{i};
     data(i).subject_notes = subject_notes{i};
 end
-
 insert(subject.Subject,data)
 
 %% delete strain
@@ -155,7 +154,7 @@ end
 %syncDef(subject.Strain)    %update a table
 
 %% subject
-data(2)= struct('subject_id','J160','subject_colony_name','J160','dob','2019-03-10','sex','M',...
+data(2)= struct('subject_id','J001','dob','2019-03-10','sex','U',...
     'breeding_pair','J147xJ152','species','mouse','mark_type','ear','mark','L','source_name','in house','strain_name','JRGECO1a');
 insert(subject.Subject,data)
 
