@@ -1,6 +1,6 @@
 %{
-(strain_name)-> subject.Strain
-(allele_name)-> subject.Allele
+-> subject.Strain
+-> subject.Allele
 %}
 
 classdef StrainAllele < dj.Manual

@@ -5,7 +5,7 @@
 -> subject.Allele
 ---
 zygosity: enum("Present", "Absent", "Homozygous Negative", "Homozygous Positive", "Heterozygous")
-zygosity_ts = CURRENT_TIMESTAMP: timestamp
+zygosity_ts=CURRENT_TIMESTAMP: timestamp
 %}
 
 classdef Zygosity < dj.Manual
