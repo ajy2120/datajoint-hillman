@@ -2,7 +2,7 @@
 #nickname
 nickname: varchar(32)
 ---
-->subject.Subject
+-> subject.Subject
 unique index (subject_id)
 %}
 
